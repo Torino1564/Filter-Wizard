@@ -1,10 +1,12 @@
 from enum import Enum
 from scipy import signal
 import matplotlib.pyplot as plt
-
+from sympy import init_printing
+init_printing()
 from app_func.full import *
 from utils import *
 
+import IPython.display as ipd
 
 class TemplateType(Enum):
     LP = 1
@@ -22,8 +24,8 @@ class BasicTemplate:
 
 class Template:
     def __init__(self, ga, gp, w_array, template_type):
-        self.fs_function = None
-        self.gw_function = None
+        self.fw_function = None
+        self.gs_function = None
         self.approximation_function_expr = None
         self.xi_val = 0
         self.order = 0
@@ -53,13 +55,14 @@ class Template:
     def get_correct_approx_function(self):
         manager = managers[self.approximation_function.value]
         self.approximation_function_expr = manager.get_approximation_function(self)
+        ipd.display(self.approximation_function_expr)
         return self.approximation_function_expr
 
     def compute(self):
         self.find_xi()
         self.find_n()
         self.get_correct_approx_function()
-        self.generate_fs_function()
+        self.generate_fw_function()
         self.cull_positive_poles()
         self.print_pzm()
 
@@ -67,12 +70,12 @@ class Template:
         self.approximation_function = approximation_function
         self.updated = false
 
-    def generate_fs_function(self):
+    def generate_fw_function(self):
         temp_function = 1 / (1 + (self.xi_val * self.approximation_function_expr) ** 2)
-        self.fs_function = temp_function.subs(s, w / I)
+        self.fw_function = temp_function.subs(w, s / I)
 
     def cull_positive_poles(self):
-        numerator, denominator = self.fs_function.as_numer_denom()
+        numerator, denominator = self.fw_function.as_numer_denom()
 
         array_denominator = denominator.as_poly().all_coeffs()
 
@@ -92,16 +95,16 @@ class Template:
             if re(pole) > 0:
                 pass
             else:
-                new_denominator *= (1 + (w / pole))
+                new_denominator *= (1 - (s / pole))
 
         for zero in zeros:
-            new_numerator *= (1 + w / zero)
+            new_numerator *= (1 - (s / zero))
 
-        self.gw_function = (gain * new_numerator) / new_denominator
+        self.gs_function = (gain * new_numerator) / new_denominator
 
     def print_pzm(self):
-        assert (self.gw_function is not None)
-        numerator, denominator = self.gw_function.as_numer_denom()
+        assert (self.gs_function is not None)
+        numerator, denominator = self.gs_function.as_numer_denom()
 
         array_denominator = denominator.as_poly().all_coeffs()
 

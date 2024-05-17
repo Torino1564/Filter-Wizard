@@ -5,9 +5,9 @@ from template import *
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    example_template = Template(0.01, 0.8, [1, 2], TemplateType.LP)
+    example_template = Template(0.01, 0.80, [1, 1.3], TemplateType.LP)
 
-    example_template.set_approximation_function(ApproximationFunction.Ch1)
+    example_template.set_approximation_function(ApproximationFunction.Butter)
     example_template.compute()
     pprint(example_template.get_correct_approx_function())
 

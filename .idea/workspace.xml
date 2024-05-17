@@ -5,16 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/app_func/approximation_function.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_func/butter.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_func/cheby.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app_func/full.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Filter Wizard Torino.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Filter Wizard Torino.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Run.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_func/butter.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_func/butter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app_func/cheby.py" beforeDir="false" afterPath="$PROJECT_DIR$/app_func/cheby.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.py" beforeDir="false" afterPath="$PROJECT_DIR$/template.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +21,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Python Script" />
+        <option value="Jupyter Notebook" />
       </list>
     </option>
   </component>
@@ -113,6 +110,10 @@
       <workItem from="1715813062491" duration="2497000" />
       <workItem from="1715816374728" duration="120000" />
       <workItem from="1715816629851" duration="9961000" />
+      <workItem from="1715894707259" duration="291000" />
+      <workItem from="1715895509512" duration="4712000" />
+      <workItem from="1715902960445" duration="939000" />
+      <workItem from="1715909367273" duration="819000" />
     </task>
     <servers />
   </component>
@@ -124,8 +125,13 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template.py</url>
-          <line>112</line>
-          <option name="timeStamp" value="35" />
+          <line>105</line>
+          <option name="timeStamp" value="37" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/template.py</url>
+          <line>57</line>
+          <option name="timeStamp" value="39" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -139,6 +145,6 @@
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/Filter_Wizard$full.coverage" NAME="full Coverage Results" MODIFIED="1715814849010" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/app_func" />
-    <SUITE FILE_PATH="coverage/Filter_Wizard$main.coverage" NAME="main Coverage Results" MODIFIED="1715827620235" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Filter_Wizard$main.coverage" NAME="main Coverage Results" MODIFIED="1715909832758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

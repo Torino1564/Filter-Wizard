@@ -16,6 +16,6 @@ class ButterManager(ApproximationFunctionManager):
 
     def get_approximation_function(self, template):
         self.validate_template(template)
-        return s ** template.order
+        return w ** template.order
 
 manager = ButterManager()
