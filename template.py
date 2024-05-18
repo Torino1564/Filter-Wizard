@@ -3,8 +3,11 @@ from enum import Enum
 import scipy.signal
 from scipy import signal
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
 from sympy import init_printing
-
+plt.rcParams.update({
+    "text.usetex": False
+})
 init_printing()
 from app_func.full import *
 from utils import *
@@ -79,7 +82,7 @@ class Template:
         self.fw_function = temp_function
 
     def generate_gs_function(self):
-        temp_function = self.fw_function.subs(w, s / I)
+        temp_function = simplify(self.fw_function).subs(w, s / I)
         self.gs_function = temp_function
 
     def generate_final_tf(self):
@@ -91,11 +94,176 @@ class Template:
             if re(pole) <= 0:
                 new_poles.append(pole)
 
-        self.final_function = signal.TransferFunction(signal.ZerosPolesGain(zeros, new_poles, gain))
+        self.final_function = signal.TransferFunction(signal.ZerosPolesGain(zeros, new_poles, sqrt(abs(gain))))
 
     approximation_function = ApproximationFunction.Butter
     basic_template = BasicTemplate
     normalized_template = BasicTemplate
+
+    def print_filter(self, normalized: bool = True):
+        assert (self.fw_function is not None)
+        template = None
+        if normalized:
+            template = self.normalized_template
+        else:
+            template = self.basic_template
+
+        num = self.final_function.num
+        den = self.final_function.den
+        final_function_expr = (Poly(num, s)) / Poly(den, s)
+        tf_abs = abs(final_function_expr.subs(s, I * w))
+        dp.display(tf_abs, "Transfer Function Absolute Value")
+        numerical_function = lambdify(w, tf_abs, 'numpy')
+        x_values = linspace(0, 2.5, 400)
+        y_values = numerical_function(x_values)
+
+        # Plot the function using Matplotlib
+        plt.plot(x_values, y_values, label=str("filter"))
+
+        # Pass Region
+        square_x = 0
+        square_y = template.Gp
+        square_height = 1 - template.Gp
+        square_width = 1
+
+        rectangle_pass = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='gray',
+                                   alpha=0.3)
+        plt.gca().add_patch(rectangle_pass)
+
+        # Attenuation Region
+        square_x = template.w_array[1]
+        square_y = 0
+        square_height = template.Ga
+        square_width = 2.5 - square_x
+
+        rectangle_att = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='gray',
+                                  alpha=0.3)
+        plt.gca().add_patch(rectangle_att)
+
+        plt.xlabel('w')
+        plt.ylabel('f(w)')
+        plt.legend()
+        plt.grid(True)
+
+        plt.show()
+
+    def show_transformations(self):
+        # Initial function
+        dp.display(
+            "The goal is to have a function that is symmetric (either even or odd) and is restricted between -1 and 1 "
+            "for x values between -1 and 1")
+        dp.display("This is the approximation function Y(w):")
+
+        numerical_function = lambdify(w, self.approximation_function_expr, 'numpy')
+        x_values = linspace(-3, 3, 400)
+        y_values = numerical_function(x_values)
+
+        plt.plot(x_values, y_values)
+
+        square_x = -1
+        square_y = -1
+        square_width = 2
+        square_height = 2
+        rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
+
+        plt.gca().add_patch(rectangle)
+        plt.xlabel(r'$\omega$')
+        plt.ylabel(r'$Y(\omega)$')
+        plt.xlim(-2, 2)
+        plt.ylim(-3, 3)
+        plt.grid(True)
+
+        plt.show()
+
+        dp.display("Then, the vertical scale of the function is reduced to accommodate for the height of the pass band."
+                   "This is achieved by multiplying the function by the xi factor")
+        numerical_function = lambdify(w, self.xi_val * self.approximation_function_expr, 'numpy')
+        y_values = numerical_function(x_values)
+
+        plt.plot(x_values, y_values, label=str(r'$Y(\omega)\xi$'))
+
+        square_x = -1
+        square_y = -self.xi_val
+        square_width = 2
+        square_height = 2 * self.xi_val
+        rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
+
+        plt.gca().add_patch(rectangle)
+        plt.xlabel(r'$\omega$')
+        plt.ylabel(r'$Y(\omega)\xi$')
+        plt.xlim(-2, 2)
+        plt.ylim(-3, 3)
+        plt.grid(True)
+
+        plt.show()
+
+        print("To ensure the function is even and its codomain is the positive real numbers, the entire expression is "
+              "squared")
+        numerical_function = lambdify(w, (self.xi_val * self.approximation_function_expr) ** 2, 'numpy')
+        y_values = numerical_function(x_values)
+
+        plt.plot(x_values, y_values)
+
+        square_x = -1
+        square_y = 0
+        square_width = 2
+        square_height = self.xi_val ** 2
+        rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
+
+        plt.gca().add_patch(rectangle)
+        plt.xlabel(r'$\omega$')
+        plt.ylabel(r'$(Y(\omega)\xi)^2$')
+        plt.xlim(-2, 2)
+        plt.ylim(0, 3)
+        plt.grid(True)
+
+        plt.show()
+
+        print("Since the normalized low pass filter has a DC gain of 0 (1 in linear scale), a 1 is added to the "
+              "expression so that the starting point of the function is 1")
+
+        numerical_function = lambdify(w, (self.xi_val * self.approximation_function_expr) ** 2 + 1, 'numpy')
+        y_values = numerical_function(x_values)
+
+        plt.plot(x_values, y_values)
+
+        square_x = -1
+        square_y = 1
+        square_width = 2
+        square_height = self.xi_val ** 2
+        rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
+
+        plt.gca().add_patch(rectangle)
+        plt.xlabel(r'$\omega$')
+        plt.ylabel(r'$(Y(\omega)\xi)^2 + 1$')
+        plt.xlim(-2, 2)
+        plt.ylim(0, 3)
+        plt.grid(True)
+
+        plt.show()
+
+        print("Lastly, the entire expression is inverted so that the it behaves like a low pass amplitude transfer "
+              "function")
+
+        numerical_function = lambdify(w, 1 / ((self.xi_val * self.approximation_function_expr) ** 2 + 1), 'numpy')
+        y_values = numerical_function(x_values)
+
+        plt.plot(x_values, y_values)
+
+        square_x = 0
+        square_y = 1/(self.xi_val ** 2 + 1)
+        square_width = 1
+        square_height = 1 - 1/(self.xi_val ** 2 + 1)
+        rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
+
+        plt.gca().add_patch(rectangle)
+        plt.xlabel(r'$\omega$')
+        plt.ylabel(r'$\frac{1}{(Y(\omega)\xi)^2 + 1}$')
+        plt.xlim(0, 2)
+        plt.ylim(0, 1)
+        plt.grid(True)
+
+        plt.show()
 
 
 def normalize_w_array(w_array, template_type):
