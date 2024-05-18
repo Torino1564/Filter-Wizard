@@ -7,7 +7,7 @@ class ApproximationFunction(Enum):
     Null = 0
     Butter = 1
     Ch1 = 2
-    Ch2 = 3
+    Cauer = 3
 
 
 class ApproximationFunctionManager:

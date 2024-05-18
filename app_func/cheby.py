@@ -21,18 +21,18 @@ class ChebyManager(ApproximationFunctionManager):
         return self.C[order].subs(w, value)
 
     def find_n(self, template):
-        lower_limit = sqrt(((1 / (template.normalized_template.Ga ** 2)) - 1) / template.xi_val)
+        lower_limit = sqrt(((1 / (template.normalized_template.Ga ** 2)) - 1) / (template.xi_val ** 2))
 
         ch1_order = 0
         ch1_value = 0
         while ch1_value < lower_limit:
-            ch1_value = self.eval_cheby(ch1_order, template.normalized_template.w_array[1])
             ch1_order += 1
+            ch1_value = self.eval_cheby(ch1_order, template.normalized_template.w_array[1])
         return ch1_order
 
     def get_approximation_function(self, template):
         self.validate_template(template)
-        approximation_function = self.C[template.n - 1].as_expr()
+        approximation_function = self.C[template.n].as_expr()
         return approximation_function
 
 
