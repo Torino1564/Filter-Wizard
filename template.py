@@ -155,7 +155,7 @@ class Template:
         dp.display("This is the approximation function Y(w):")
 
         numerical_function = lambdify(w, self.approximation_function_expr, 'numpy')
-        x_values = linspace(-3, 3, 400)
+        x_values = linspace(-3, 5, 600)
         y_values = numerical_function(x_values)
 
         plt.plot(x_values, y_values)
@@ -251,15 +251,15 @@ class Template:
         plt.plot(x_values, y_values)
 
         square_x = 0
-        square_y = 1/(self.xi_val ** 2 + 1)
+        square_y = self.normalized_template.Gp ** 2
         square_width = 1
-        square_height = 1 - 1/(self.xi_val ** 2 + 1)
+        square_height = 1 - self.normalized_template.Gp ** 2
         rectangle = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='grey', alpha=0.3)
 
         plt.gca().add_patch(rectangle)
         plt.xlabel(r'$\omega$')
         plt.ylabel(r'$\frac{1}{(Y(\omega)\xi)^2 + 1}$')
-        plt.xlim(0, 2)
+        plt.xlim(0, 4)
         plt.ylim(0, 1)
         plt.grid(True)
 

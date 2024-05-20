@@ -3,7 +3,7 @@ from app_func.approximation_function import *
 P, s, e, w = symbols('P, s, e, w')
 
 
-class ChebyManager(ApproximationFunctionManager):
+class BesselManager(ApproximationFunctionManager):
     def __init__(self):
         self.C = []
         self.C.append(Poly([1], w))
@@ -37,4 +37,4 @@ class ChebyManager(ApproximationFunctionManager):
 
 
 
-manager = ChebyManager()
+manager = BesselManager()

@@ -7,7 +7,8 @@ class ApproximationFunction(Enum):
     Null = 0
     Butter = 1
     Ch1 = 2
-    Cauer = 3
+    Ch2 = 3
+    Cauer = 4
 
 
 class ApproximationFunctionManager:
@@ -15,8 +16,7 @@ class ApproximationFunctionManager:
     def get_approximation_function(self, template):
         pass
 
-    @staticmethod
-    def find_xi(template):
+    def find_xi(self, template):
         return float(sqrt((1 / template.normalized_template.Gp ** 2) - 1))
 
     @abstractmethod
