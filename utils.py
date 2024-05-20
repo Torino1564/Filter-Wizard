@@ -20,8 +20,8 @@ def print_pzm(transfer_function: sg.TransferFunction):
 
     # Add labels and legend
     plt.xlabel('Real')
-    plt.xlim(-1.5, 1.5)
-    plt.ylim(-1.5, 1.5)
+    plt.xlim(-2, 2)
+    plt.ylim(-2, 2)
     plt.ylabel('Imaginary')
     plt.title('Poles and Zeros Map')
     plt.legend()
