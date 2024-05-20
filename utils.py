@@ -4,13 +4,13 @@ import matplotlib.pyplot as plt
 import scipy.signal as sg
 import IPython.display as dp
 
+
 def log_base(value, base):
     result = log(value) / log(base)
     return result
 
 
 def print_pzm(transfer_function: sg.TransferFunction):
-
     poles = transfer_function.poles
     zeros = transfer_function.zeros
 
@@ -41,10 +41,45 @@ def print_pzm(transfer_function: sg.TransferFunction):
     # print poles and zeros
     dp.display("Poles:")
     for pole in poles:
-        dp.display("{}) Wo:{}, Phase:{}, Q:{}" .format(pole_count, abs(pole), angle(pole), absolute(1/(2*sin(absolute(angle(pole) - pi/2))))))
+        dp.display("{}) Wo:{}, Phase:{}, Q:{}".format(pole_count, abs(pole), angle(pole),
+                                                      absolute(1 / (2 * sin(absolute(angle(pole) - pi / 2))))))
         pole_count += 1
 
     dp.display("Zeros:")
     for zero in zeros:
         dp.display("{}) Wo:{}, Phase:{}".format(pole_count, abs(zero), angle(zero)))
 
+
+def print_bode(transfer_function):
+    numerator = transfer_function.num
+    denominator = transfer_function.den
+
+    system = sg.TransferFunction(numerator, denominator)
+
+    freq, amplitude, phase = sg.bode(system)
+
+    plt.figure()
+    plt.semilogx(freq, amplitude)
+    plt.title("Filter Bode Amplitude Diagram")
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Amplitude [dB]")
+    plt.grid(which='both', axis='both')
+
+    plt.show()
+
+def print_bode(transfer_function):
+    numerator, denominator = transfer_function.as_numer_denom()
+    num_coeffs = numerator.as_poly().all_coeffs()
+    den_coeffs = denominator.as_poly().all_coeffs()
+    system = sg.TransferFunction(num_coeffs, den_coeffs)
+
+    freq, amplitude, phase = sg.bode(system)
+
+    plt.figure()
+    plt.semilogx(freq, amplitude)
+    plt.title("Filter Bode Amplitude Diagram")
+    plt.xlabel("Frequency (Hz)")
+    plt.ylabel("Amplitude [dB]")
+    plt.grid(which='both', axis='both')
+
+    plt.show()

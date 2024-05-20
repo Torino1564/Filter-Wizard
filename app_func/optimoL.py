@@ -8,6 +8,8 @@ P, s, e, w = symbols('P, s, e, w')
 class OptimoLManager(ApproximationFunctionManager):
     def __init__(self):
         self.C = []
+        # self.C.append(Poly([0], w))
+        self.C.append(Poly([1, 0], w))
         self.C.append(Poly([1, 0, 0], w))
         self.C.append(Poly([1, 0, 0, 0, 0], w))
         self.C.append(Poly([3, 0, -3, 0, 1, 0, 0], w))
@@ -24,7 +26,7 @@ class OptimoLManager(ApproximationFunctionManager):
         if order > self.order_counter:
             pprint("Maximum order exceeded")
             return np.Inf
-        return self.C[order].subs(w, value)
+        return sqrt(self.C[order].as_expr()).subs(w, value)
 
     def find_n(self, template):
         lower_limit = sqrt(((1 / (template.normalized_template.Ga ** 2)) - 1) / (template.xi_val ** 2))
