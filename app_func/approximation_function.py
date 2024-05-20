@@ -8,6 +8,7 @@ class ApproximationFunction(Enum):
     Butter = 1
     Ch1 = 2
     Cauer = 3
+    OL = 4
 
 
 class ApproximationFunctionManager:
