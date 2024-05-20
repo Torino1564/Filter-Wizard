@@ -66,20 +66,3 @@ def print_bode(transfer_function):
     plt.grid(which='both', axis='both')
 
     plt.show()
-
-def print_bode(transfer_function):
-    numerator, denominator = transfer_function.as_numer_denom()
-    num_coeffs = numerator.as_poly().all_coeffs()
-    den_coeffs = denominator.as_poly().all_coeffs()
-    system = sg.TransferFunction(num_coeffs, den_coeffs)
-
-    freq, amplitude, phase = sg.bode(system)
-
-    plt.figure()
-    plt.semilogx(freq, amplitude)
-    plt.title("Filter Bode Amplitude Diagram")
-    plt.xlabel("Frequency (Hz)")
-    plt.ylabel("Amplitude [dB]")
-    plt.grid(which='both', axis='both')
-
-    plt.show()
