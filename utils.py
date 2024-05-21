@@ -1,3 +1,4 @@
+import numpy as np
 import scipy.signal
 from numpy import *
 import matplotlib.pyplot as plt
@@ -20,11 +21,10 @@ def print_pzm(transfer_function: sg.TransferFunction):
 
     # Add labels and legend
     plt.xlabel('Real')
-    plt.xlim(-2, 2)
-    plt.ylim(-2, 2)
     plt.ylabel('Imaginary')
     plt.title('Poles and Zeros Map')
     plt.legend()
+    plt.gca().set_aspect('equal', adjustable='box')
 
     # Add unit circle (optional)
     unit_circle = plt.Circle((0, 0), 1, fill=False, linestyle='dotted', color='gray')
@@ -32,12 +32,12 @@ def print_pzm(transfer_function: sg.TransferFunction):
 
     # Set aspect ratio to equal
     plt.gca().set_aspect('equal', adjustable='box')
-
+    plt.gca().autoscale_view()
     # Show plot
     plt.grid(True)
     plt.show()
-
     pole_count = 1
+    zero_count = 1
     # print poles and zeros
     dp.display("Poles:")
     for pole in poles:
@@ -47,16 +47,28 @@ def print_pzm(transfer_function: sg.TransferFunction):
 
     dp.display("Zeros:")
     for zero in zeros:
-        dp.display("{}) Wo:{}, Phase:{}".format(pole_count, abs(zero), angle(zero)))
+        dp.display("{}) Wo:{}, Phase:{}".format(zero_count, abs(zero), angle(zero)))
+        zero_count += 1
 
 
-def print_bode(transfer_function):
+def print_bode(transfer_function, wi=0, wf=0, points=0):
+    w_array = None
+    if wi != 0 and wf != 0:
+        if points != 0:
+            w_array = np.logspace(wi, wf, points)
+        else:
+            w_array = np.logspace(wi, wf)
+
+
     numerator = transfer_function.num
     denominator = transfer_function.den
 
     system = sg.TransferFunction(numerator, denominator)
 
-    freq, amplitude, phase = sg.bode(system)
+    if w_array is None:
+        freq, amplitude, phase = sg.bode(system)
+    else:
+        freq, amplitude, phase = sg.bode(system, w_array)
 
     plt.figure()
     plt.semilogx(freq, amplitude)
@@ -66,3 +78,18 @@ def print_bode(transfer_function):
     plt.grid(which='both', axis='both')
 
     plt.show()
+
+
+def round_complex(num, decimals):
+    return complex(round(num.real, decimals), round(num.imag, decimals))
+
+
+def remove_duplicates(complex_array, decimals=2):
+    seen = set()
+    unique_list = []
+    for num in complex_array:
+        rounded_num = round_complex(num, decimals)
+        if rounded_num not in seen:
+            seen.add(rounded_num)
+            unique_list.append(num)  # Append the original number
+    return np.array(unique_list)
