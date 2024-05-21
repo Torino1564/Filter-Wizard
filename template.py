@@ -1,3 +1,4 @@
+import copy
 from enum import Enum
 
 import scipy.signal
@@ -5,15 +6,16 @@ from scipy import signal
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from sympy import init_printing
+
 plt.rcParams.update({
     "text.usetex": False
 })
 init_printing()
 from app_func.full import *
 from utils import *
-
+import numpy
 import IPython.display as ipd
-
+import copy as cp
 
 class TemplateType(Enum):
     LP = 1
@@ -31,6 +33,8 @@ class BasicTemplate:
 
 class Template:
     def __init__(self, ga, gp, w_array, template_type):
+        self.basic_template = BasicTemplate()
+        self.normalized_template = BasicTemplate()
         self.fw_function = None
         self.gs_function = None
         self.final_function = None
@@ -45,10 +49,13 @@ class Template:
 
         self.normalized_template.Ga = ga
         self.normalized_template.Gp = gp
-        self.normalized_template.w_array = normalize_w_array(w_array, template_type)
+        self.normalized_template.w_array = []
+        self.normalized_template.w_array.append(1)
+        self.normalized_template.w_array.append(w_array[1] / w_array[0])
         self.normalized_template.template_type = template_type
 
-        self.find_xi()
+        self.final_function_expr = None
+
 
     def find_xi(self):
         manager = managers[self.approximation_function.value]
@@ -86,19 +93,24 @@ class Template:
         self.gs_function = temp_function
 
     def generate_final_tf(self):
-        num, den = [[float(i) for i in Poly(i, s).all_coeffs()] for i in self.gs_function.as_numer_denom()]
+        num, den = [[float(i) for i in Poly(i, s).all_coeffs()] for i in
+                    simplify(self.gs_function.subs(s, s / self.basic_template.w_array[0])).as_numer_denom()]
         zeros, poles, gain = signal.tf2zpk(num, den)
+
+        new_zeros = []
+        for zero in zeros:
+            if re(zero) != 0 and im(zero) != 0:
+                new_zeros.append(zero)
 
         new_poles = []
         for pole in poles:
-            if re(pole) <= 0:
+            if re(pole) < 0:
                 new_poles.append(pole)
 
-        self.final_function = signal.TransferFunction(signal.ZerosPolesGain(zeros, new_poles, sqrt(abs(gain))))
+        self.final_function = signal.TransferFunction(signal.ZerosPolesGain(new_zeros, new_poles, sqrt(abs(gain))))
+        self.final_function_expr = (Poly(self.final_function.num, s) / Poly(self.final_function.den, s)).as_expr()
 
     approximation_function = ApproximationFunction.Butter
-    basic_template = BasicTemplate
-    normalized_template = BasicTemplate
 
     def print_filter(self, normalized: bool = True):
         assert (self.fw_function is not None)
@@ -245,7 +257,7 @@ class Template:
         print("Lastly, the entire expression is inverted so that the it behaves like a low pass amplitude transfer "
               "function")
 
-        numerical_function = lambdify(w, 1 / ((self.xi_val * self.approximation_function_expr) ** 2 + 1), 'numpy')
+        numerical_function = lambdify(w, self.fw_function, 'numpy')
         y_values = numerical_function(x_values)
 
         plt.plot(x_values, y_values)
