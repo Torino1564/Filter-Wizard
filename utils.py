@@ -51,14 +51,15 @@ def print_pzm(transfer_function: sg.TransferFunction):
         zero_count += 1
 
 
-def print_bode(transfer_function, wi=0, wf=0, points=0):
+def print_bode(transfer_function, wi=0, wf=0, points=0, wx_array=None, wy_array=None):
+    if wx_array is None:
+        wx_array = []
     w_array = None
     if wi != 0 and wf != 0:
         if points != 0:
             w_array = np.logspace(wi, wf, points)
         else:
             w_array = np.logspace(wi, wf)
-
 
     numerator = transfer_function.num
     denominator = transfer_function.den
@@ -71,12 +72,18 @@ def print_bode(transfer_function, wi=0, wf=0, points=0):
         freq, amplitude, phase = sg.bode(system, w_array)
 
     plt.figure()
+
+    for w in wx_array:
+        plt.axvline(x=w, color='red', linestyle='--')
+
+    for fy in wy_array:
+        plt.axhline(y=fy, color='blue', linestyle='--')
+
     plt.semilogx(freq, amplitude)
     plt.title("Filter Bode Amplitude Diagram")
     plt.xlabel("Frequency (Hz)")
     plt.ylabel("Amplitude [dB]")
     plt.grid(which='both', axis='both')
-
     plt.show()
 
 
