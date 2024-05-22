@@ -107,6 +107,9 @@ class Template:
             if re(pole) < 0:
                 new_poles.append(pole)
 
+        if self.approximation_function == ApproximationFunction.Ch2:
+            new_zeros = remove_duplicates(new_zeros, 3)
+
         self.final_function = signal.TransferFunction(signal.ZerosPolesGain(new_zeros, new_poles, sqrt(abs(gain))))
         self.final_function_expr = (Poly(self.final_function.num, s) / Poly(self.final_function.den, s)).as_expr()
 

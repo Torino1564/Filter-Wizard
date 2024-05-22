@@ -4,12 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="HP WORKS" />
+    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="Sync">
+      <change afterPath="$PROJECT_DIR$/Testing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Cauer.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Cauer.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HighPass.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HighPass.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Run.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Sedra Design.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sedra Design.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="ChangesViewManager" show_ignored="true" />
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
@@ -35,24 +44,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.full.executor": "Run",
-    "Python.main.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/jtori/Downloads",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Python.full.executor&quot;: &quot;Run&quot;,
+    &quot;Python.main.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jtori/Downloads&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.notebooks.jupyter.connections.configuration.JupyterServerConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\dev\Filter-Wizard\functions" />
@@ -119,6 +129,11 @@
       <workItem from="1716144554257" duration="6460000" />
       <workItem from="1716209532106" duration="65000" />
       <workItem from="1716212005673" duration="45000" />
+      <workItem from="1716300456379" duration="2947000" />
+      <workItem from="1716323986824" duration="4556000" />
+      <workItem from="1716329000117" duration="217000" />
+      <workItem from="1716329231653" duration="2396000" />
+      <workItem from="1716331652667" duration="8347000" />
     </task>
     <task id="LOCAL-00001" summary="Many improvements, some stuff works now. Cheby1 and butter work pretty well">
       <option name="closed" value="true" />
@@ -144,15 +159,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716238723962</updated>
     </task>
-    <task id="LOCAL-00004" summary="HP WORKS">
+    <task id="LOCAL-00004" summary="Checkpoint">
       <option name="closed" value="true" />
-      <created>1716239197995</created>
+      <created>1716267627333</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1716239197995</updated>
+      <updated>1716267627333</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Sync">
+      <option name="closed" value="true" />
+      <created>1716303953021</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1716303953021</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -163,36 +186,37 @@
     <MESSAGE value="Many improvements, some stuff works now. Cheby1 and butter work pretty well" />
     <MESSAGE value="sync" />
     <MESSAGE value="Commit and sync" />
-    <MESSAGE value="HP WORKS" />
-    <option name="LAST_COMMIT_MESSAGE" value="HP WORKS" />
+    <MESSAGE value="Checkpoint" />
+    <MESSAGE value="Sync" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sync" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
-          <url>file://$PROJECT_DIR$/app_func/optimoL.py</url>
-          <line>35</line>
-          <option name="timeStamp" value="26" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template.py</url>
-          <line>161</line>
+          <line>176</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hp_template.py</url>
-          <line>28</line>
+          <line>29</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hp_template.py</url>
-          <line>23</line>
+          <line>24</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/hp_template.py</url>
           <line>5</line>
           <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/bp_template.py</url>
+          <line>6</line>
+          <option name="timeStamp" value="46" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
