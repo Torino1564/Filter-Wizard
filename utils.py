@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 import scipy.signal as sg
 import IPython.display as dp
 
-
 def log_base(value, base):
     result = log(value) / log(base)
     return result
@@ -14,6 +13,8 @@ def log_base(value, base):
 def print_pzm(transfer_function: sg.TransferFunction):
     poles = transfer_function.poles
     zeros = transfer_function.zeros
+
+    plt.figure(figsize=(8, 8))
 
     # Plot poles and zeros
     plt.scatter(poles.real, poles.imag, marker='x', color='red', label='Poles')
@@ -24,15 +25,15 @@ def print_pzm(transfer_function: sg.TransferFunction):
     plt.ylabel('Imaginary')
     plt.title('Poles and Zeros Map')
     plt.legend()
-    plt.gca().set_aspect('equal', adjustable='box')
+    # plt.gca().set_aspect('equal', adjustable='box')
 
     # Add unit circle (optional)
     unit_circle = plt.Circle((0, 0), 1, fill=False, linestyle='dotted', color='gray')
     plt.gca().add_artist(unit_circle)
 
     # Set aspect ratio to equal
-    plt.gca().set_aspect('equal', adjustable='box')
-    plt.gca().autoscale_view()
+    # plt.gca().set_aspect('equal', adjustable='box')
+    # plt.gca().autoscale_view()
     # Show plot
     plt.grid(True)
     plt.show()
@@ -73,11 +74,13 @@ def print_bode(transfer_function, wi=0, wf=0, points=0, wx_array=None, wy_array=
 
     plt.figure()
 
-    for w in wx_array:
-        plt.axvline(x=w, color='red', linestyle='--')
+    if wx_array is not None:
+        for w in wx_array:
+            plt.axvline(x=w, color='red', linestyle='--')
 
-    for fy in wy_array:
-        plt.axhline(y=fy, color='blue', linestyle='--')
+    if wy_array is not None:
+        for fy in wy_array:
+            plt.axhline(y=fy, color='blue', linestyle='--')
 
     plt.semilogx(freq, amplitude)
     plt.title("Filter Bode Amplitude Diagram")
