@@ -4,12 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="Commit and sync">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HighPass.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HighPass.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hp_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/hp_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
-    </list>
+    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="HP WORKS" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -149,7 +144,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716238723962</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="HP WORKS">
+      <option name="closed" value="true" />
+      <created>1716239197995</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1716239197995</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -160,7 +163,8 @@
     <MESSAGE value="Many improvements, some stuff works now. Cheby1 and butter work pretty well" />
     <MESSAGE value="sync" />
     <MESSAGE value="Commit and sync" />
-    <option name="LAST_COMMIT_MESSAGE" value="Commit and sync" />
+    <MESSAGE value="HP WORKS" />
+    <option name="LAST_COMMIT_MESSAGE" value="HP WORKS" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
