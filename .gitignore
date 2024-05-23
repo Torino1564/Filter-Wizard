@@ -1,0 +1,7 @@
+
+*.pyc
+*.xml
+.idea/workspace.xml
+.idea/workspace.xml
+.ipynb_checkpoints/Cauer-checkpoint.ipynb
+.ipynb_checkpoints/Testing-checkpoint.ipynb

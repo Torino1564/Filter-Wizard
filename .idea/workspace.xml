@@ -5,13 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="Sync">
-      <change afterPath="$PROJECT_DIR$/Testing.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Cauer.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Cauer.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HighPass.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HighPass.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Run.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Run.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Sedra Design.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Sedra Design.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,6 +128,8 @@
       <workItem from="1716329000117" duration="217000" />
       <workItem from="1716329231653" duration="2396000" />
       <workItem from="1716331652667" duration="8347000" />
+      <workItem from="1716344297095" duration="295000" />
+      <workItem from="1716477585772" duration="540000" />
     </task>
     <task id="LOCAL-00001" summary="Many improvements, some stuff works now. Cheby1 and butter work pretty well">
       <option name="closed" value="true" />
@@ -175,7 +171,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716303953021</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Sync">
+      <option name="closed" value="true" />
+      <created>1716344574420</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1716344574420</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
