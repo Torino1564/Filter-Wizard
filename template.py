@@ -127,9 +127,14 @@ class Template:
         den = self.final_function.den
         final_function_expr = (Poly(num, s)) / Poly(den, s)
         tf_abs = abs(final_function_expr.subs(s, I * w))
+
+        # Remove this line
+        # tf_abs = tf_abs.subs(w, self.normalized_template.w_array[1]/w).simplify()
+        # tf_abs = 1 - tf_abs
+
         dp.display(tf_abs, "Transfer Function Absolute Value")
         numerical_function = lambdify(w, tf_abs, 'numpy')
-        x_values = linspace(0, 2.5, 400)
+        x_values = linspace(0, 4, 400)
         y_values = numerical_function(x_values)
 
         # Plot the function using Matplotlib
@@ -149,12 +154,12 @@ class Template:
         square_x = template.w_array[1]
         square_y = 0
         square_height = template.Ga
-        square_width = 2.5 - square_x
+        square_width = 10
 
         rectangle_att = Rectangle((square_x, square_y), square_width, square_height, fill=True, color='gray',
                                   alpha=0.3)
         plt.gca().add_patch(rectangle_att)
-
+        plt.xlim(0, 2.5)
         plt.xlabel('w')
         plt.ylabel('f(w)')
         plt.legend()

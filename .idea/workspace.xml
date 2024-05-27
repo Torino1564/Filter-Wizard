@@ -4,7 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="Sync" />
+    <list default="true" id="6ac20600-a471-438d-8e55-ddb264ac260b" name="Changes" comment="Sync">
+      <change afterPath="$PROJECT_DIR$/BandReject.ipynb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/br_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/BandPass.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/BandPass.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HighPass.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/HighPass.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Run.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Run.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Testing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Testing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bp_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/bp_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/template.py" beforeDir="false" afterPath="$PROJECT_DIR$/template.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -45,7 +55,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/dev&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/jtori/Downloads&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -131,6 +141,15 @@
       <workItem from="1716331652667" duration="8347000" />
       <workItem from="1716404888652" duration="7404000" />
       <workItem from="1716419059091" duration="18277000" />
+      <workItem from="1716478413521" duration="141000" />
+      <workItem from="1716528977114" duration="24000" />
+      <workItem from="1716757565817" duration="6295000" />
+      <workItem from="1716770891603" duration="1603000" />
+      <workItem from="1716776377171" duration="2105000" />
+      <workItem from="1716779684381" duration="25000" />
+      <workItem from="1716779829717" duration="10000" />
+      <workItem from="1716783013363" duration="2234000" />
+      <workItem from="1716815125831" duration="11165000" />
     </task>
     <task id="LOCAL-00001" summary="Many improvements, some stuff works now. Cheby1 and butter work pretty well">
       <option name="closed" value="true" />
@@ -180,11 +199,30 @@
       <option name="project" value="LOCAL" />
       <updated>1716448666167</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Sync">
+      <option name="closed" value="true" />
+      <created>1716478501204</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1716478501204</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Sync. Added jupyter" />
@@ -200,7 +238,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
           <url>file://$PROJECT_DIR$/template.py</url>
-          <line>179</line>
+          <line>184</line>
           <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
@@ -222,11 +260,6 @@
           <url>file://$PROJECT_DIR$/bp_template.py</url>
           <line>6</line>
           <option name="timeStamp" value="46" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" suspend="THREAD" type="jupyter-line">
-          <url>notebook://C:/dev/Filter-Wizard/Testing.ipynb</url>
-          <line>53</line>
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>

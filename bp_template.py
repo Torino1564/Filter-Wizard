@@ -3,21 +3,21 @@ import sympy as sp
 import numpy as np
 
 class BPTemplate:
-    def __init__(self, Gp, Ga, wp1, wp2, wa1, wa2):
+    def __init__(self, Gp, Ga, wo, wp1, wa1):
         self.low_pass_template = None
         self.approximation_function = None
         self.Gp = Gp
         self.Ga = Ga
         self.wp1 = wp1
         self.wa1 = wa1
-        self.wa2 = wa2
-        self.wp2 = wp2
+        self.wa2 = wo**2 / wa1
+        self.wp2 = wo**2 / wp1
         self.final_function = None
         self.final_function_expr = None
 
-        self.bwp = wp2 - wp1
-        self.bwa = wa2 - wa1
-        self.wo = 10 ** ((np.log10(wp1) + np.log10(wp2)) / 2)
+        self.bwp = self.wp2 - wp1
+        self.bwa = self.wa2 - wa1
+        self.wo = wo
 
     def set_approximation_function(self, approximation_function):
         self.approximation_function = approximation_function
